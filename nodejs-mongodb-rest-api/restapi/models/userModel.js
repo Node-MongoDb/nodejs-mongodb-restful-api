@@ -1,49 +1,49 @@
 "use strict";
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Schema = new Schema({
+var Schema = new Schema(
+  {
     id: {
-        type: Number,
+      type: Number,
     },
     username: {
-        type: String,
-        required: "Se requiere un nombre de usuario."
+      type: String,
+      required: "Se requiere un nombre de usuario.",
     },
     email: {
-        type: String,
-        required: "Se requiere un email."
+      type: String,
+      required: "Se requiere un email.",
     },
     password: {
-        type: String,
-        required:  "Se requiere un password."
+      type: String,
+      required: "Se requiere un password.",
     },
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    },
-    avatar: {
-        type: String,
-
+   avatar: {
+      type: String,
     },
     role: {
-        type: Number,
-        //0-user
-        //1-superuser
-        //2-admin
-        //3-superadmin
+      type: Number,
+      //0-user
+      //1-superuser
+      //2-admin
+      //3-superadmin
     },
     first_name: {
-        type: String,
+      type: String,
     },
     last_name: {
-        type: String,
+      type: String,
     },
     login_count: {
-        type: Number
+      type: Number,
     },
     online: {
-        type: Number
-    }
-});
+      type: Number,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model("Users", Schema);
