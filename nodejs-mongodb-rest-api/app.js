@@ -2,17 +2,35 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  Product = require('./restapi/models/productModel'),
+  Device = require('./restapi/models/deviceModel'),
+  User = require('./restapi/models/userModel'),
+  Device = require('./restapi/models/deviceModel'),
+  Rol = require('./restapi/models/rolModel'),
   bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/onlinestore', { useMongoClient: true });
+// mongoose.connect('mongodb://localhost/onlinestore', { 
+  mongoose.connect('mongodb://localhost/DOMControl', { 
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./restapi/routes/productRoutes');
+// routes
+// app.use(require('./restapi/routes/productRoutes'));
+// app.use(require('./restapi/routes/deviceRoutes'));
+// app.use( require('./restapi/routes/userRoutes'));
+// app.use(require('./restapi/routes/rolRoutes'));
+
+// const routes = require('./restapi/routes/productRoutes');
+// const routes = require('./restapi/routes/deviceRoutes');
+const routes = require('./restapi/routes/userRoutes');
+// const routes = require('./restapi/routes/rolRoutes');
+
+
 routes(app);
 
 app.use(function(req, res) {
@@ -21,4 +39,4 @@ app.use(function(req, res) {
 
 app.listen(port);
 
-console.log('Online Store -  RESTful web services with Nodejs started on: ' + port);
+console.log('DOMControl  RESTful web services with Nodejs started on: ' + port);
