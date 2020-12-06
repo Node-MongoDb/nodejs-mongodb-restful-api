@@ -20,12 +20,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // routes
-// app.use(require('./restapi/routes/productRoutes'));
 // app.use(require('./restapi/routes/deviceRoutes'));
 // app.use( require('./restapi/routes/userRoutes'));
 // app.use(require('./restapi/routes/rolRoutes'));
 
-// const routes = require('./restapi/routes/productRoutes');
 // const routes = require('./restapi/routes/deviceRoutes');
 const routes = require('./restapi/routes/userRoutes');
 // const routes = require('./restapi/routes/rolRoutes');
