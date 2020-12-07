@@ -1,23 +1,18 @@
-var express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
-  mongoose = require('mongoose'),
-  Device = require('./restapi/models/deviceModel'),
-  User = require('./restapi/models/userModel'),
-  Device = require('./restapi/models/deviceModel'),
-  Rol = require('./restapi/models/rolModel'),
-  bodyParser = require('body-parser');
+// const express = require('express'),
+import express from "express";
+
+const app = express();
+const port = process.env.PORT || 3000;
+const mongoose = require('mongoose');
+const User = require('./restapi/models/userModel');
+const Device = require('./restapi/models/deviceModel');
+const Rol = require('./restapi/models/rolModel');
 
 mongoose.Promise = global.Promise;
-// mongoose.connect('mongodb://localhost/onlinestore', { 
   mongoose.connect('mongodb://localhost/DOMControl', { 
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 // routes
 // app.use(require('./restapi/routes/deviceRoutes'));
@@ -28,7 +23,6 @@ app.use(bodyParser.json());
 const routes = require('./restapi/routes/userRoutes');
 // const routes = require('./restapi/routes/rolRoutes');
 
-
 routes(app);
 
 app.use(function(req, res) {
@@ -36,5 +30,4 @@ app.use(function(req, res) {
 });
 
 app.listen(port);
-
 console.log('DOMControl  RESTful web services with Nodejs started on: ' + port);
